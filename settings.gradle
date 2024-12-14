@@ -1,0 +1,8 @@
+rootProject.name = 'Krystal_Distribution_Group'
+
+include 'application'
+include 'common'
+include 'warehouse'
+include 'landside'
+include 'waterside'
+include 'invoice'

@@ -1,0 +1,196 @@
+### Get access token with user (seller)
+POST http://localhost:8180/realms/krystal-distribution-group/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id = landside &
+client_secret = 1Si6Me3twRUZM1TEidxSJnSNWUk6hncZ &
+username = seller &
+password = password &
+grant_type = password &
+scope = openid
+
+//saving the access token
+> {%
+    client.global.set("access_token", response.body.access_token);
+%}
+
+### Request 1: Make Delivery Appointment
+POST /api/delivery-appointments HTTP/1.1
+Host: localhost:8090
+Content-Type: application/json
+Content-Length: 172
+Authorization: Bearer {{access_token}}
+
+{
+  "sellerUUID": "ef01c728-ce36-46b5-a110-84f53fdd9668",
+  "licensePlate": "1-ABC-123",
+  "payload": "GYPSUM",
+  "arrivalWindowStart": "2024-11-04T09:00:00"
+}
+
+### Get access token with user (truckdriver)
+POST http://localhost:8180/realms/krystal-distribution-group/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id = landside &
+client_secret = 1Si6Me3twRUZM1TEidxSJnSNWUk6hncZ &
+username = truckdriver &
+password = password &
+grant_type = password &
+scope = openid
+
+//saving the access token
+> {%
+    client.global.set("access_token", response.body.access_token);
+%}
+
+### Request 2: Check License Plate
+GET /api/gate/1-ABC-123 HTTP/1.1
+Host: localhost:8090
+Authorization: Bearer {{access_token}}
+
+### Request 3: Weigh Truck on Arrival
+POST /api/weighing-bridge HTTP/1.1
+Host: localhost:8090
+Content-Type: application/json
+Content-Length: 95
+Authorization: Bearer {{access_token}}
+
+{
+  "licensePlate": "1-ABC-123",
+  "positionStatus": "weighing_bridge_entry",
+  "weight": 25000.0
+}
+
+### Request 4a: Make Delivery [Deprecated]
+POST /api/delivery HTTP/1.1
+Host: localhost:8090
+Content-Type: application/json
+Content-Length: 114
+Authorization: Bearer {{access_token}}
+
+{
+  "sellerUUID": "ef01c728-ce36-46b5-a110-84f53fdd9668",
+  "material": "GYPSUM",
+  "amount": "200000"
+}
+
+### Request 4b: Dock Conveyor Belt
+POST /api/conveyor-belt HTTP/1.1
+Host: localhost:8090
+Content-Type: application/json
+Content-Length: 92
+Authorization: Bearer {{access_token}}
+
+{
+  "sellerUUID": "ef01c728-ce36-46b5-a110-84f53fdd9668",
+  "payloadData": "Gypsum",
+  "licensePlate": "1-ABC-123"
+}
+
+### Request 5: Get Trucks on Site
+GET /api/site/trucks HTTP/1.1
+Host: localhost:8090
+Authorization: Bearer {{access_token}}
+
+### Request 6: Weigh Truck on Departure
+POST /api/weighing-bridge HTTP/1.1
+Host: localhost:8090
+Content-Type: application/json
+Content-Length: 97
+Authorization: Bearer {{access_token}}
+
+{
+  "licensePlate": "1-ABC-123",
+  "positionStatus": "weighing_bridge_exit",
+  "weight": 20000.0
+}
+
+### Request 7: Get Delivery Appointments
+GET /api/delivery-appointment HTTP/1.1
+Host: localhost:8090
+Authorization: Bearer {{access_token}}
+
+### Get access token with user (buyer)
+POST http://localhost:8180/realms/krystal-distribution-group/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id = warehouse &
+client_secret = t1Ax7pB57LqpM8dLS5y3w0gyew9A2BEx &
+username = buyer &
+password = password &
+grant_type = password &
+scope = openid
+
+//saving the access token
+> {%
+    client.global.set("access_token", response.body.access_token);
+%}
+
+### Request 8: Make Purchase Order
+POST /api/purchase-order HTTP/1.1
+Host: localhost:8090
+Content-Type: application/json
+Content-Length: 764
+Authorization: Bearer {{access_token}}
+
+{
+  "poNumber": "PO-12345",
+  "referenceUUID": "111e4567-e89b-12d3-a456-426614174000",
+  "customerParty": {
+    "partyUUID": "d4f6e8b9-45a1-4b99-93de-348f1d6f7410",
+    "name": "Customer Corp",
+    "address": "123 Customer St, Customer City"
+  },
+  "sellerParty": {
+    "partyUUID": "ef01c728-ce36-46b5-a110-84f53fdd9668",
+    "name": "Seller Corp",
+    "address": "456 Seller Ave, Seller City"
+  },
+  "vesselNumber": "Vessel-789",
+  "orderLines": [
+    {
+      "lineNumber": 1,
+      "materialType": "GYPSUM",
+      "description": "Gypsum",
+      "quantity": 7000,
+      "uom": "tons"
+    },
+    {
+      "lineNumber": 2,
+      "materialType": "IRON_ORE",
+      "description": "Iron Ore",
+      "quantity": 8500,
+      "uom": "tons"
+    }
+  ]
+}
+
+### Get access token with user (captain)
+POST http://localhost:8180/realms/krystal-distribution-group/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id = landside &
+client_secret = 1Si6Me3twRUZM1TEidxSJnSNWUk6hncZ &
+username = captain &
+password = password &
+grant_type = password &
+scope = openid
+
+//saving the access token
+> {%
+    client.global.set("access_token", response.body.access_token);
+%}
+
+### Request 9: Carry out Shipment
+POST /api/shipment HTTP/1.1
+Host: localhost:8090
+Content-Type: application/json
+Content-Length: 153
+Authorization: Bearer {{access_token}}
+
+{
+  "sellerUUID": "ef01c728-ce36-46b5-a110-84f53fdd9668",
+  "referenceUUID": "111e4567-e89b-12d3-a456-426614174000",
+  "vesselNumber": "Vessel-789"
+}

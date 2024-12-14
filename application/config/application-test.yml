@@ -1,0 +1,14 @@
+spring:
+  sql:
+    init:
+      mode: always
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+      show-sql: true
+    defer-datasource-initialization: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: myuser
+    password: mypassword

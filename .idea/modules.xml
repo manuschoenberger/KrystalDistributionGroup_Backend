@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/application/Krystal_Distribution_Group.application.main.iml" filepath="$PROJECT_DIR$/.idea/modules/application/Krystal_Distribution_Group.application.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/invoice/Krystal_Distribution_Group.invoice.main.iml" filepath="$PROJECT_DIR$/.idea/modules/invoice/Krystal_Distribution_Group.invoice.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/landside/Krystal_Distribution_Group.landside.main.iml" filepath="$PROJECT_DIR$/.idea/modules/landside/Krystal_Distribution_Group.landside.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/landside/Krystal_Distribution_Group.landside.test.iml" filepath="$PROJECT_DIR$/.idea/modules/landside/Krystal_Distribution_Group.landside.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/warehouse/Krystal_Distribution_Group.warehouse.main.iml" filepath="$PROJECT_DIR$/.idea/modules/warehouse/Krystal_Distribution_Group.warehouse.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/waterside/Krystal_Distribution_Group.waterside.main.iml" filepath="$PROJECT_DIR$/.idea/modules/waterside/Krystal_Distribution_Group.waterside.main.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,22 @@
+plugins {
+    id 'module-config'
+    id 'spring-conventions'
+}
+
+dependencies {
+    implementation project(":common")
+    implementation project(':warehouse')
+    implementation project(':landside')
+    implementation project(':waterside')
+    implementation project(':invoice')
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'mysql:mysql-connector-java:8.0.33'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+
+    compileOnly 'org.projectlombok:lombok:1.18.28'
+    annotationProcessor 'org.projectlombok:lombok:1.18.28'
+}

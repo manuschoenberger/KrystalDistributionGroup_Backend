@@ -1,0 +1,69 @@
+### Fake Delivery Event (Gypsum)
+POST /api/exchanges/%2F/warehouse_events/publish HTTP/1.1
+Host: localhost:15672
+Authorization: Basic bXl1c2VyOm15cGFzc3dvcmQ=
+Content-Type: application/json
+Content-Length: 231
+
+{
+  "properties": {},
+  "routing_key": "payload.submitted",
+  "payload": "{\"sellerUUID\":{\"uuid\":\"ef01c728-ce36-46b5-a110-84f53fdd9668\"},\"rawMaterialData\":\"GYPSUM\",\"amount\":10000}",
+  "payload_encoding": "string"
+}
+
+### Fake Delivery Event (Iron Ore)
+POST /api/exchanges/%2F/warehouse_events/publish HTTP/1.1
+Host: localhost:15672
+Authorization: Basic bXl1c2VyOm15cGFzc3dvcmQ=
+Content-Type: application/json
+Content-Length: 231
+
+{
+  "properties": {},
+  "routing_key": "payload.submitted",
+  "payload": "{\"sellerUUID\":{\"uuid\":\"ef01c728-ce36-46b5-a110-84f53fdd9668\"},\"rawMaterialData\":\"IRON_ORE\",\"amount\":10000}",
+  "payload_encoding": "string"
+}
+
+### Fake Delivery Event (Cement)
+POST /api/exchanges/%2F/warehouse_events/publish HTTP/1.1
+Host: localhost:15672
+Authorization: Basic bXl1c2VyOm15cGFzc3dvcmQ=
+Content-Type: application/json
+Content-Length: 231
+
+{
+  "properties": {},
+  "routing_key": "payload.submitted",
+  "payload": "{\"sellerUUID\":{\"uuid\":\"fe01c728-ce36-46b5-a110-84f53fdd9668\"},\"rawMaterialData\":\"CEMENT\",\"amount\":300000}",
+  "payload_encoding": "string"
+}
+
+### Fake Delivery Event (Petcoke)
+POST /api/exchanges/%2F/warehouse_events/publish HTTP/1.1
+Host: localhost:15672
+Authorization: Basic bXl1c2VyOm15cGFzc3dvcmQ=
+Content-Type: application/json
+Content-Length: 231
+
+{
+  "properties": {},
+  "routing_key": "payload.submitted",
+  "payload": "{\"sellerUUID\":{\"uuid\":\"fe01c728-ce36-46b5-a110-84f53fdd9668\"},\"rawMaterialData\":\"PETCOKE\",\"amount\":450000}",
+  "payload_encoding": "string"
+}
+
+### Fake Delivery Event (Slag)
+POST /api/exchanges/%2F/warehouse_events/publish HTTP/1.1
+Host: localhost:15672
+Authorization: Basic bXl1c2VyOm15cGFzc3dvcmQ=
+Content-Type: application/json
+Content-Length: 231
+
+{
+  "properties": {},
+  "routing_key": "payload.submitted",
+  "payload": "{\"sellerUUID\":{\"uuid\":\"ee01c728-ce36-46b5-a110-84f53fdd9668\"},\"rawMaterialData\":\"SLAG\",\"amount\":10000}",
+  "payload_encoding": "string"
+}
